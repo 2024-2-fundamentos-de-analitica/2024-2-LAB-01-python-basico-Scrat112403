@@ -15,3 +15,9 @@ def pregunta_12():
     {'A': 177, 'B': 187, 'C': 114, 'D': 136, 'E': 324}
 
     """
+    with open("files/input/data.csv") as file:
+        data = file.readlines()
+        result = {key: sum(int(value.split(":")[1])for line in data if key in line.split()[0] for value in line.split()[4].split(","))
+            for line in data for key in {line.split()[0]}}
+
+        return result

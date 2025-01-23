@@ -20,3 +20,9 @@ def pregunta_10():
 
 
     """
+    with open("files/input/data.csv") as file:
+        data = file.readlines()
+        result = [(value, len(line.split()[3].split(",")), len(line.split()[4].split(",")))
+            for line in data for value in line.split()[0]
+        ]
+        return result
